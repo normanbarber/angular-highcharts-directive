@@ -1,18 +1,25 @@
 {
-    "name": "angular_highcharts_directive",
-    "version": "0.0.1",
-    "dependencies": {
-        "underscore": "*",
-        "restify": "*",
-        "express": "3.1.0",
-        "cors": "*",
-        "config": "*",
-        "q": "*",
-        "express-expose": "*",
-        "socket.io": "1.0"
-    },
-    "devDependencies": { },
-    "engines": {
-        "node": ">=0.8.0"
-    }
+	"name": "angular_highcharts_directive",
+	"version": "0.0.1",
+	"scripts": {
+		"start": "node server.js"
+	},
+	"dependencies": {
+		"body-parser": "^1.5.2",
+		"express": "^4.0.0",
+		"method-override": "^2.1.2",
+		"multer": "^0.1.3",
+		"underscore": "*",
+		"restify": "*",
+		"express": "^4.0",
+		"cors": "*",
+		"config": "*",
+		"q": "*",
+		"express-expose": "*",
+		"socket.io": "1.0"
+	},
+	"devDependencies": { },
+	"engines": {
+		"node": ">=0.8.0"
+	}
 }
