@@ -1,61 +1,48 @@
 'use strict';
 
 angular.module('Charts.directives.controller', [])
-    .controller('ChartDirectiveController', ['$scope', '$log', function(scope, log){
+	.controller('ChartDirectiveController', ['$scope', '$log', function(scope, log){
 
-    scope.getChartData = function(message){
-        var locationarray = [];
-        var itemsPerPage = 0;
-        var storage = [];
-        var bar_colors =  [];
-        var data = message.locations;
-        var graphdata;
-        var uom;
+		scope.getChartData = function(message){
+			var locationarray = [];
+			var itemsPerPage = 0;
+			var onhand = [];
+			var barcolors =  [];
+			var data = message.locations;
+			var graphdata;
 
-        for (var i in data) {
-            graphdata = [];
-            uom = data[i].uom;
-            graphdata = parseInt(data[i].onHand);
+			for (var i in data) {
+				graphdata = [];
+				graphdata = parseInt(data[i].onHand);
+				onhand.push(graphdata);
+				barcolors.push(data[i].color);
+				locationarray.push(data[i].location);
+				itemsPerPage++;
+			}
 
-            if (data[i].onHand <= data[i].safetyLevel) {
-                storage.push(graphdata);
-                bar_colors.push('#e84c3d');
+			var options = {
+				chart: {
+					renderTo: angular.element(document.querySelector('.charts'))[0]
+				},
+				title: {
+					text: ''
+				},
+				xAxis: {
+					categories: locationarray,
+					max: itemsPerPage - 1
+				},
+				series: [
+					{
+						maxPointWidth: 10,
+						data: onhand,
+						colors: barcolors
 
-            }
-            else if (data[i].onHand <= data[i].reorderPt) {
-                storage.push(graphdata);
-                bar_colors.push('#00add5');
-            } else {
-                storage.push(graphdata);
-                bar_colors.push('#72b842');
-            }
-            locationarray.push(data[i].location);
-            itemsPerPage++;
-        }
-
-        var options = {
-            chart: {
-                renderTo: angular.element(document.querySelector('.charts'))[0]
-            },
-            title: {
-                text: ''
-            },
-            xAxis: {
-                categories: locationarray,
-                max: itemsPerPage - 1
-            },
-            series: [
-                {
-                    maxPointWidth: 10,
-                    data: storage,
-                    colors: bar_colors
-
-                }
-            ]
-        };
-        var chartdata = {};
-        chartdata.options = options;
-        return chartdata;
-    }
+					}
+				]
+			};
+			var chartdata = {};
+			chartdata.options = options;
+			return chartdata;
+		}
 
 }]);
