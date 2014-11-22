@@ -15,17 +15,17 @@ angular.module('Charts.controllers', [])
 	var chartdata = {
 		material : "SAND",
 		locations : [{
-				location: "N. Mel",
+				location: "Dublin",
 				onHand: "214.74",
 				color: "#e84c3d"
 			},
 			{
-				location: "Indiana",
+				location: "Martinsburg",
 				onHand: "174.74",
 				color: "#00add5"
 			},
 			{
-				location: "Vict",
+				location: "Sandusky",
 				onHand: "189.89",
 				color: "#72b842"
 			}

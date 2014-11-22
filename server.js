@@ -36,7 +36,7 @@ var rest = restify.createServer({
 });
 rest.use(restify.bodyParser());
 
-self.chartserver.on('connection', function(socket){
+this.chartserver.on('connection', function(socket){
 	socket.on('connected', function(){
 		console.log('client handshake completed');
 	});

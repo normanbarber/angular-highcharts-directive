@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('Charts.directives', [])
-	.directive('barChart', function(){
+	.directive('columnChart', function(){
 		return {
 			restrict: 'EAC',
 			replace: true,
